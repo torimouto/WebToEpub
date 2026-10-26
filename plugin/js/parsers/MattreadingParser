@@ -6,29 +6,17 @@ class MattreadingParser extends Parser {
     constructor() {
         super();
     }
+
     async getChapterUrls(dom) {
-        let menu = dom.querySelector("h2.post-title");
-        let chapterUrls = [];
-        let links = menu.querySelectorAll("a");
-        for (let link of links) {
-            if (link.href && link.href.endsWith(".htm")) {
-                chapterUrls.push({ 
-                    sourceUrl: link.href, 
-                    title: link.textContent 
-                });
-            }
-        }
-        return chapterUrls;
+        return [...dom.querySelector("h2.post-title a")]
+            .map(link => this.linkToChapter(link)).reverse();
+    }
 
     findContent(dom) {
         return dom.querySelector("div.entry-content");
     }
 
-    extractTitleImpl(dom) {
+    findChapterTitle(dom) {
         return dom.querySelector("h1.entry-title");
-    }
-        let strip = [...node.querySelectorAll("img")]
-            .map(e => e.parentElement);
-        util.removeElements(strip);
     }
 }
