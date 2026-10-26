@@ -9,7 +9,6 @@ class MattreadingParser extends Parser {
 
     async getChapterUrls(dom) {
         return [...dom.querySelector("h2.post-title a")]
-            .map(link => this.linkToChapter(link)).reverse();
     }
 
     findContent(dom) {
