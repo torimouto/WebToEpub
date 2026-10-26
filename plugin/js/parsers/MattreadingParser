@@ -1,0 +1,29 @@
+"use strict";
+
+//dead url/ parser
+parserFactory.register("mattreadingtranslations.com", () => new MattreadingParser());
+
+class MattreadingParser extends Parser {
+    constructor() {
+        super();
+    }
+
+    getChapterUrls(dom) {
+        let links = [...dom.querySelectorAll("h2.post-title a")]
+            .reverse()
+            .map(link => util.hyperLinkToChapter(link));
+        return Promise.resolve(links);        
+    }
+
+    findContent(dom) {
+        return dom.querySelector("div.entry-content");
+    }
+
+    extractTitleImpl(dom) {
+        return dom.querySelector("h1.entry-title");
+    }
+        let strip = [...node.querySelectorAll("img")]
+            .map(e => e.parentElement);
+        util.removeElements(strip);
+    }
+}
