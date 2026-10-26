@@ -1,6 +1,5 @@
 "use strict";
 
-//dead url/ parser
 parserFactory.register("mattreadingtranslations.com", () => new MattreadingParser());
 
 class MattreadingParser extends Parser {
